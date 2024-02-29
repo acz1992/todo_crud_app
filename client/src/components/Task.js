@@ -15,7 +15,9 @@ export const Task = ({ task, toggleComplete, deleteTodo, editTodo }) => {
 			<div>
 				<FontAwesomeIcon
 					icon={faPenToSquare}
-					onClick={() => editTodo(task._id)}
+					onClick={() => {
+						editTodo(task);
+					}}
 				/>
 				<FontAwesomeIcon
 					icon={faTrash}

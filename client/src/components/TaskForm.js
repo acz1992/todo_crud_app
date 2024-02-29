@@ -6,6 +6,7 @@ export const TaskForm = ({ addTodo }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (!value.trim()) return; // Prevent adding empty task
 		addTodo({ title: value });
 		setValue("");
 	};
@@ -18,7 +19,7 @@ export const TaskForm = ({ addTodo }) => {
 				placeholder="What is the task today?"
 				onChange={(e) => setValue(e.target.value)}
 			/>
-			<button type="submit" className="task-btn">
+			<button type="submit" className="task-btn" disabled={!value.trim()}>
 				Add Task
 			</button>
 		</form>

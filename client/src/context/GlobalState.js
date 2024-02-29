@@ -87,7 +87,7 @@ export const GlobalProvider = ({ children }) => {
 		} catch (error) {
 			dispatch({
 				type: "TASK_ERROR",
-				payload: error.res.data.error,
+				payload: error.response.data.error,
 			});
 		}
 	}
