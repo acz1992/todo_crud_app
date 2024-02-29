@@ -8,7 +8,7 @@ export const EditTaskForm = ({ editTodo, task }) => {
 		e.preventDefault();
 		if (value.trim() !== "") {
 			// Check if value is not an empty string
-			editTodo({ ...task, title: value });
+			editTodo(value, task._id);
 			setValue(""); // Clear the value state
 		}
 	};

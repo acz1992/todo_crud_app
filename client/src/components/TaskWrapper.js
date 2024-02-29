@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TaskForm } from "./TaskForm";
 import { Task } from "./Task";
 import { EditTaskForm } from "./EditTaskForm";
@@ -25,8 +25,8 @@ export const TaskWrapper = () => {
 	};
 
 	// Edit Task
-	const editTodo = (task) => {
-		editTask(task);
+	const editTodo = (id) => {
+		editTask(id);
 	};
 
 	return (
