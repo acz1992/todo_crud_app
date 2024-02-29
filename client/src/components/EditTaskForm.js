@@ -1,28 +1,28 @@
 import React from "react";
 import { useState } from "react";
 
-export const EditTodoForm = ({ editTodo, task }) => {
-	const [value, setValue] = useState(task.task);
+export const EditTaskForm = ({ editTodo, task }) => {
+	const [value, setValue] = useState(task.title);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (value.trim() !== "") {
 			// Check if value is not an empty string
-			editTodo(value, task.id);
+			editTodo(value, task._id);
 			setValue(""); // Clear the value state
 		}
 	};
 
 	return (
-		<form className="TodoForm" onSubmit={handleSubmit}>
+		<form className="TaskForm" onSubmit={handleSubmit}>
 			<input
 				type="text"
-				className="todo-input"
+				className="task-input"
 				value={value}
 				placeholder="Update Task"
 				onChange={(e) => setValue(e.target.value)}
 			/>
-			<button type="submit" className="todo-btn">
+			<button type="submit" className="task-btn">
 				Update
 			</button>
 		</form>

@@ -1,11 +1,14 @@
 import "./App.css";
-import { TodoWrapper } from "./components/TodoWrapper";
+import { TaskWrapper } from "./components/TaskWrapper";
+import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
 	return (
-		<div className="App">
-			<TodoWrapper />
-		</div>
+		<GlobalProvider>
+			<div className="App">
+				<TaskWrapper />
+			</div>
+		</GlobalProvider>
 	);
 }
 

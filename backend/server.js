@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Use the tasks router for all requests to /api/v1/tasks
-// NAVIGATE HERE IN BROWSER // NOT JUST TO LOCALHOST:5000
+// NAVIGATE HERE IN BROWSER // NOT JUST TO LOCALH
 app.use("/api/v1/tasks", tasks);
 
 // If the environment is production, serve the static files from the client/build folder
