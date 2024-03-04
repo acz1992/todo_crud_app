@@ -5,8 +5,10 @@ import { EditTaskForm } from "./EditTaskForm";
 import { GlobalContext } from "../context/GlobalState";
 
 export const TaskWrapper = () => {
-	const { tasks, getTasks, addTask, deleteTask, editTask } =
-		useContext(GlobalContext);
+	const { tasks, getTasks, addTask, deleteTask } = useContext(GlobalContext);
+
+	const [isEditing, setIsEditing] = useState(false);
+	const [editingTaskId, setEditingTaskId] = useState(null);
 
 	// Get Tasks
 	useEffect(() => {
@@ -25,8 +27,9 @@ export const TaskWrapper = () => {
 	};
 
 	// Edit Task
-	const editTodo = (id) => {
-		editTask(id);
+	const editForm = (taskId) => {
+		setEditingTaskId(taskId);
+		setIsEditing(true);
 	};
 
 	return (
@@ -34,18 +37,14 @@ export const TaskWrapper = () => {
 			<h1>Todo App</h1>
 			<TaskForm addTodo={addTodo} />
 			{tasks.map((task) =>
-				task.isEditing ? (
-					<EditTaskForm
-						key={task._id}
-						task={task}
-						editTodo={editTodo}
-					/>
+				task._id === editingTaskId ? (
+					<EditTaskForm key={task._id} task={task} />
 				) : (
 					<Task
 						key={task._id}
 						task={task}
 						deleteTodo={deleteTodo}
-						editTodo={editTodo}
+						editForm={editForm}
 					/>
 				)
 			)}
