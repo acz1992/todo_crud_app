@@ -9,8 +9,9 @@ export const EditTaskForm = ({ task, editTodo }) => {
 
 		if (value.trim() !== "") {
 			// Check if value is not an empty string
-			editTodo(value);
-			console.log(value);
+			setValue(e.target.value);
+			task.title = value;
+			editTodo(task);
 		}
 	};
 

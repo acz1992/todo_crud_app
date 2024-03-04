@@ -17,6 +17,7 @@ export const Task = ({ task, toggleComplete, deleteTodo, editForm }) => {
 					icon={faPenToSquare}
 					onClick={() => {
 						editForm(task._id);
+						console.log(task);
 					}}
 				/>
 				<FontAwesomeIcon

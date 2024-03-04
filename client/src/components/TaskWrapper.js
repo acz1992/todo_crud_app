@@ -33,7 +33,7 @@ export const TaskWrapper = () => {
 
 	const editTodo = (updatedTask) => {
 		editTask(updatedTask);
-		console.log(updatedTask);
+		setEditingTaskId(null);
 	};
 
 	return (
