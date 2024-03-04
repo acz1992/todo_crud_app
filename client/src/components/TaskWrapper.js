@@ -8,6 +8,8 @@ export const TaskWrapper = () => {
 	const { tasks, getTasks, addTask, deleteTask, editTask } =
 		useContext(GlobalContext);
 
+	const [editingTaskId, setEditingTaskId] = useState(null);
+
 	// Get Tasks
 	useEffect(() => {
 		getTasks();
@@ -25,8 +27,13 @@ export const TaskWrapper = () => {
 	};
 
 	// Edit Task
-	const editTodo = (id) => {
-		editTask(id);
+	const editForm = (taskId) => {
+		setEditingTaskId(taskId);
+	};
+
+	const editTodo = (updatedTask) => {
+		editTask(updatedTask);
+		setEditingTaskId(null);
 	};
 
 	return (
@@ -34,7 +41,7 @@ export const TaskWrapper = () => {
 			<h1>Todo App</h1>
 			<TaskForm addTodo={addTodo} />
 			{tasks.map((task) =>
-				task.isEditing ? (
+				task._id === editingTaskId ? (
 					<EditTaskForm
 						key={task._id}
 						task={task}
@@ -45,7 +52,7 @@ export const TaskWrapper = () => {
 						key={task._id}
 						task={task}
 						deleteTodo={deleteTodo}
-						editTodo={editTodo}
+						editForm={editForm}
 					/>
 				)
 			)}

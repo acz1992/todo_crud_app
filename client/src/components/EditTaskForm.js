@@ -1,15 +1,17 @@
 import React from "react";
 import { useState } from "react";
 
-export const EditTaskForm = ({ editTodo, task }) => {
+export const EditTaskForm = ({ task, editTodo }) => {
 	const [value, setValue] = useState(task.title);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (value.trim() !== "") {
 			// Check if value is not an empty string
-			editTodo(value, task._id);
-			setValue(""); // Clear the value state
+			setValue(e.target.value);
+			task.title = value;
+			editTodo(task);
 		}
 	};
 
